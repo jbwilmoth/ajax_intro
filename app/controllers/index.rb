@@ -50,6 +50,6 @@ end
 post '/contacts/:id/delete' do
   @contact = Contact.find(params[:id])
   @contact.destroy
-  redirect to '/'
+  redirect to '/contacts'
 end
 

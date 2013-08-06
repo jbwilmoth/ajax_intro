@@ -1,21 +1,31 @@
-<h1>Welcome to Sinatra!</h1>
-<p>Hello, world!</p>
-
-<table>
-  <tr>
-    <th>File Description</th>
-    <th>File Location</th>
-  </tr>
-  <tr>
-    <td>This view file</td>
-    <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
-  </tr>
-  <tr>
-    <td>The layout file</td>
-    <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-  </tr>
-  <tr>
-    <td>The current controller</td>
-    <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-  </tr>
-</table>
+<section class="contacts">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+      <% @contacts.each do |contact| %>
+        <tr>
+          <td><%= contact.id %></td>
+          <td><%= contact.first_name %></td>
+          <td><%= contact.last_name %></td>
+          <td><%= contact.phone %></td>
+          <td><%= contact.email %></td>
+          <td>
+            <a href="/contacts/<%= contact.id %>/edit">EDIT</a>
+            <form action="/contacts/<%= contact.id %>/delete" method="POST">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+<a href="/contacts/new">Create Contact</a>

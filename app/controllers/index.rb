@@ -8,8 +8,7 @@ end
 
 # Retrieve the form used to collect data from the user to create a contact
 get '/contacts/new' do
-  @contact = Contact.new(params[:contact])
-  erb :new
+  erb :new, layout: !request.xhr?
 end
 
 # Retrieve the resource with the id from the url
@@ -28,9 +27,14 @@ end
 
 # Create a new contact with data from the form
 post '/contacts' do
+  puts params.inspect
   @contact = Contact.new(params[:contact])
   if @contact.save
-    redirect to "/contacts/#{@contact.id}"
+    if request.xhr?
+      erb :_contact_tr, layout: false, locals: {contact: @contact}
+    else
+      redirect to "/contacts/#{@contact.id}"
+    end
   else
     erb :new
   end

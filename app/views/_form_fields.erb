@@ -1,0 +1,23 @@
+<div class="controls">
+  <label for="first_name">First Name:</label>
+  <input id="first_name" name="contact[first_name]" type="text" value="<%= @contact.try(:first_name) %>">
+</div>
+
+<div class="controls">
+  <label for="last_name">Last Name:</label>
+  <input id="last_name" name="contact[last_name]" type="text" value="<%= @contact.try(:last_name) %>">
+</div>
+
+<div class="controls">
+  <label for="phone">Phone</label>
+  <input id="phone" name="contact[phone]" type="text" value="<%= @contact.try(:phone) %>">
+</div>
+
+<div class="controls">
+  <label for="email">Email</label>
+  <input id="email" name="contact[email]" type="text" value="<%= @contact.try(:email) %>">
+</div>
+
+<div class="controls">
+  <input type="submit">
+</div>

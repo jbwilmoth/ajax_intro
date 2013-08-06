@@ -1,4 +1,4 @@
 get '/:id' do
-  # Look in app/views/index.erb
+  @contacts = Contact.order('last_name ASC') # sort them by alphabetical order
   erb :index
 end

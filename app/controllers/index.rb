@@ -9,3 +9,10 @@ get '/contacts/new' do
   @contact = Contact.new(params[:contact])
   erb :new
 end
+
+# resource is the specific contact containing the id passed by the url
+get '/contacts/:id' do
+  @contact = Contact.find(params[:id])
+  erb :show
+end
+
